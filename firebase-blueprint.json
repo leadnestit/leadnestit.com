@@ -1,0 +1,71 @@
+{
+  "entities": {
+    "consultation": {
+      "title": "Consultation",
+      "description": "Client consultation requests and inquiries submitted via web form or admin",
+      "type": "object",
+      "properties": {
+        "fullName": { "type": "string", "maxLength": 100 },
+        "businessName": { "type": "string", "maxLength": 150 },
+        "email": { "type": "string", "maxLength": 100 },
+        "phoneOrWhatsApp": { "type": "string", "maxLength": 40 },
+        "requiredServices": { "type": "string", "maxLength": 200 },
+        "approximateBudget": { "type": "string", "maxLength": 50 },
+        "projectDetails": { "type": "string", "maxLength": 1000 },
+        "currency": { "type": "string", "enum": ["USD", "BDT"] },
+        "hasFirstTimeDiscount": { "type": "boolean" },
+        "region": { "type": "string", "maxLength": 50 },
+        "status": { "type": "string", "maxLength": 30 },
+        "assignedFounder": { "type": "string", "maxLength": 100 },
+        "founderNotes": { "type": "string", "maxLength": 1000 },
+        "createdAt": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["fullName", "email", "phoneOrWhatsApp"]
+    },
+    "invoice": {
+      "title": "Client Invoice and Enrollment Agreement",
+      "description": "Professional enrollment invoice, payment slip, and project agreement issued to enrolled clients",
+      "type": "object",
+      "properties": {
+        "invoiceNumber": { "type": "string", "maxLength": 50 },
+        "clientName": { "type": "string", "maxLength": 100 },
+        "companyName": { "type": "string", "maxLength": 150 },
+        "clientEmail": { "type": "string", "maxLength": 100 },
+        "clientPhone": { "type": "string", "maxLength": 40 },
+        "country": { "type": "string", "maxLength": 60 },
+        "serviceTitle": { "type": "string", "maxLength": 200 },
+        "scopeDescription": { "type": "string", "maxLength": 2000 },
+        "currency": { "type": "string", "enum": ["USD", "BDT"] },
+        "subtotal": { "type": "number" },
+        "discountPercent": { "type": "number" },
+        "discountAmount": { "type": "number" },
+        "totalAmount": { "type": "number" },
+        "paidAmount": { "type": "number" },
+        "balanceDue": { "type": "number" },
+        "paymentStatus": { "type": "string", "enum": ["paid", "partial", "due"] },
+        "paymentMethod": { "type": "string", "maxLength": 50 },
+        "transactionReference": { "type": "string", "maxLength": 100 },
+        "assignedFounder": { "type": "string", "maxLength": 100 },
+        "issueDate": { "type": "string", "maxLength": 40 },
+        "dueDate": { "type": "string", "maxLength": 40 },
+        "kickoffDate": { "type": "string", "maxLength": 40 },
+        "completionTarget": { "type": "string", "maxLength": 60 },
+        "emailSent": { "type": "boolean" },
+        "emailSentAt": { "type": "string", "maxLength": 50 },
+        "agreementTerms": { "type": "string", "maxLength": 2000 },
+        "createdAt": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["invoiceNumber", "clientName", "clientEmail", "totalAmount"]
+    }
+  },
+  "firestore": {
+    "/consultations/{consultationId}": {
+      "schema": { "$ref": "#/entities/consultation" },
+      "description": "Collection of client consultation requests"
+    },
+    "/invoices/{invoiceId}": {
+      "schema": { "$ref": "#/entities/invoice" },
+      "description": "Collection of client enrollment invoices and agreements"
+    }
+  }
+}

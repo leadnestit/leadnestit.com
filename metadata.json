@@ -1,0 +1,8 @@
+{
+  "name": "LeadNest IT",
+  "description": "Marketing, Websites & AI Customer Support—built to help businesses attract, convert and serve more customers without wasted budget or slow execution.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
